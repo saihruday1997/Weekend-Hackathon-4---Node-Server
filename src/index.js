@@ -2,6 +2,10 @@ var http = require("http");
 
 const httpServer = http.createServer(handleServer);
 
+let jsonFile = JSON.stringify({
+    "phone": "18602100000",
+    "email": "guestcaredominos@jublfood.com"
+});
 
 function handleServer(req, res) {
     if (req.url === "/welcome") {
@@ -10,11 +14,11 @@ function handleServer(req, res) {
         res.end();
     } else if (req.url === "/contact") {
         res.statusCode = 200;
-        res.json({phone: "18602100000", email: "guestcaredominos@jublfood.com"});
+        res.write(jsonFile);
         res.end();
-    }
-    else{
+    } else {
         res.statusCode = 404;
+        res.end();
     }
 }
 
