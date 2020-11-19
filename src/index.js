@@ -9,9 +9,13 @@ let jsonFile = JSON.stringify({
 
 function handleServer(req, res) {
     if (req.url === "/welcome") {
+        res.statusCode = 200;
+        res.setHeader('content-type', 'text/plain');
         res.write("Welcome to Dominos!");
         res.end();
     } else if (req.url === "/contact") {
+        res.statusCode = 200;
+        res.setHeader('content-type', 'application/json');
         res.write(jsonFile);
         res.end();
     } else {
